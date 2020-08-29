@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import firebase from "firebase";
 import Login from "./views/login/login";
 
-import SideNav from "./common/components/SideNav";
 const App = () => {
   const [isLogged, setIsLogged] = useState(false);
 
@@ -13,13 +12,7 @@ const App = () => {
       setIsLogged(false);
     }
   });
-  return (
-    <div style={{ display: "flex" }}>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <div>{isLogged ? <SideNav /> : <Login />}</div>
-      </div>
-    </div>
-  );
+  return <div>{isLogged ? <div>Logged In</div> : <Login />}</div>;
 };
 
 export default App;
