@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import firebase from "firebase";
 import Login from "./views/login/login";
-import Cam from "./templates";
-import SideBar from "./common/components/SideNav";
 import Routes from "./common/utils/routes";
 
 const App = () => {
