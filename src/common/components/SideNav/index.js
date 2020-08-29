@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Layout } from "antd";
+import { Menu, Layout } from "../ReportsLayout/node_modules/antd";
 import {
 	VideoCameraOutlined,
 	DatabaseOutlined,

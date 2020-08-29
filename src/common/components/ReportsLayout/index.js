@@ -1,10 +1,7 @@
 import { Table, Tag, Space } from 'antd';
 import React, { Component } from "react";
 
-
-
-
-class TableView extends Component {
+function ReportsLayout() {
     columns = [
         {
           title: "Name",
@@ -80,7 +77,8 @@ class TableView extends Component {
 
   const [dataSource, setDataSource] = useState(data);
   
-  render() {
-    <Table columns={columns} dataSource={data} />, mountNode
-  }
+  return (
+  <Table columns={columns} dataSource={dataSource} />, mountNode);
 }
+
+export default ReportsLayout;
