@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import Typography from "../common/typography";
 import Box from "../common//box";
-import { MdSend, MdClear } from "react-icons/md";
-// , MdCancel
+import { MdClear } from "react-icons/md";
 import Avatar from "../common/avatar";
-import Tooltip from "../common//tooltip";
+import Tooltip from "../common/tooltip";
 import Message from "./components/message";
 import {
   Container,
