@@ -1,24 +1,24 @@
-import styled from 'styled-components';
-import { Card } from '@common/card';
-import Button from '@common/button';
+import styled from "styled-components";
+import { Card } from "../common/card";
+import Button from "../common/button";
 
 const WhiteBox = styled(Card)`
   border-radius: 0;
   position: absolute;
 
-  ${props =>
+  ${(props) =>
     props.top &&
     `
     top: ${props.top};
   `}
 
-  ${props =>
+  ${(props) =>
     props.bottom &&
     `
     bottom: ${props.bottom};
   `}
   
-  ${props =>
+  ${(props) =>
     props.height &&
     `
     height: ${props.height};
@@ -77,5 +77,5 @@ export {
   Scroll,
   CloseButton,
   ActionButton,
-  Form
+  Form,
 };
