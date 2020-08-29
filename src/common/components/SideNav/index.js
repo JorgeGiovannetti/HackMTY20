@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Menu, Layout } from "antd";
-import { VideoCameraOutlined, DatabaseOutlined } from "@ant-design/icons";
+import {
+	VideoCameraOutlined,
+	DatabaseOutlined,
+	FormOutlined,
+} from "@ant-design/icons";
 import { Link, withRouter } from "react-router-dom";
 
 const { Sider } = Layout;
@@ -24,10 +28,15 @@ class SideNav extends Component {
 						<VideoCameraOutlined />
 						<span className="nav-text">Video Feed</span>
 					</Menu.Item>
-					<Menu.Item key="/indicadores">
-						<Link to="/indicadores"></Link>
+					<Menu.Item key="/Analytics">
+						<Link to="/"></Link>
 						<DatabaseOutlined />
 						<span className="nav-text">Analytics</span>
+					</Menu.Item>
+					<Menu.Item key="/reports">
+						<Link to="/"></Link>
+						<FormOutlined />
+						<span className="nav-text">Reports</span>
 					</Menu.Item>
 				</Menu>
 			</Sider>
