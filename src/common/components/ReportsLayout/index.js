@@ -1,8 +1,8 @@
 import { Table, Tag, Space } from "antd";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
-function ReportsLayout() {
-  columns = [
+const ReportsLayout = () => {
+  const columns = [
     {
       title: "Name",
       dataIndex: "name",
@@ -51,7 +51,7 @@ function ReportsLayout() {
     },
   ];
 
-  data = [
+  const data = [
     {
       key: "1",
       name: "John Brown",
@@ -78,5 +78,6 @@ function ReportsLayout() {
   const [dataSource, setDataSource] = useState(data);
 
   return <Table columns={columns} dataSource={dataSource} />;
-}
+};
+
 export default ReportsLayout;
