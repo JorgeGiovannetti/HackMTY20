@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import firebase from "firebase"
 import { Button } from "antd";
+import Login from "./views/login/login"
 
 const App = () => {
 	const [isLogged, setIsLogged] = useState(false);
@@ -14,7 +15,7 @@ const App = () => {
 	  });
 
 	return (
-        <div>{isLogged ? <Button>Login</Button> : <Button>Dashboard</Button>}</div>
+        <div>{isLogged ? <Button>Login</Button> : <Login/>}</div>
       );
 };
 
