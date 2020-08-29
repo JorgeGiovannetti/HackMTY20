@@ -30,13 +30,13 @@ const SideNav = ({ location }) => {
 					<VideoCameraOutlined />
 					<span className="nav-text">Video Feed</span>
 				</Menu.Item>
-				<Menu.Item key="/Analytics">
-					<Link to="/"></Link>
+				<Menu.Item key="/analytics">
+					<Link to="/analytics"></Link>
 					<DatabaseOutlined />
 					<span className="nav-text">Analytics</span>
 				</Menu.Item>
 				<Menu.Item key="/reports">
-					<Link to="/"></Link>
+					<Link to="/reports"></Link>
 					<FormOutlined />
 					<span className="nav-text">Reports</span>
 				</Menu.Item>
