@@ -4,7 +4,7 @@ import App from "../../../App";
 
 const Routes = () => (
 	<Switch>
-		<Route path="/" exact component={App} />
+		<Route path="/" component={App} />
 	</Switch>
 );
 

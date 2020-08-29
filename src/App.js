@@ -14,10 +14,12 @@ const App = () => {
 	});
 
 	return (
-		<div>
+		<div style={{ display: "flex" }}>
 			<SideNav />
-			<div>
-				{isLogged ? <Button>Login</Button> : <Button>Dashboard</Button>}
+			<div style={{ display: "flex", flexDirection: "column" }}>
+				<div>
+					{isLogged ? <Button>Login</Button> : <Button>Dashboard</Button>}
+				</div>
 			</div>
 		</div>
 	);

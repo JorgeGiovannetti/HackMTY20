@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Fuego, FuegoProvider } from "@nandorojo/swr-firestore";
-// import firebase from "firebase"
 import "antd/dist/antd.css";
+import { Fuego, FuegoProvider } from "@nandorojo/swr-firestore";
 import { Router } from "react-router-dom";
 import Routes from "./common/utils/routes";
 import history from "./common/utils/routes/history";
