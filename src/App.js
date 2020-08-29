@@ -1,11 +1,10 @@
 import React from "react";
 import { Button } from "antd";
-
+import SideNav from "./common/components/SideNav";
 const App = () => {
 	return (
 		<div>
-			<header>POSTy :D</header>
-			<Button>Hi</Button>
+			<SideNav />
 		</div>
 	);
 };

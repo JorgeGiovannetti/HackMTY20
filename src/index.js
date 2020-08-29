@@ -1,11 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
-import App from "./App";
+import { Router } from "react-router-dom";
+import Routes from "./common/utils/routes";
+import history from "./common/utils/routes/history";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<Router history={history}>
+			<Routes />
+		</Router>
 	</React.StrictMode>,
 	document.getElementById("root")
 );
