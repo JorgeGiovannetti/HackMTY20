@@ -46,7 +46,7 @@ function lineGraph(data) {
 
 const Analytics = () => {
   const getMessages = async () => {
-    const messagesRef = firebase.database().ref(`/reports`).limitToLast(100);
+    const messagesRef = firebase.database().ref(`/reports`).limitToLast(1000);
     messagesRef.on("value", (snapshot) => {
       let messagesObj = snapshot.val();
       let messages = [];
