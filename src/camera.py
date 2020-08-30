@@ -6,15 +6,19 @@ import cv2
 import math
 import random
 import requests
+from datetime import datetime, date
+import time
 
 hog = cv2.HOGDescriptor()
 hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 MAX_DIST = 75
 stores = ["A", "B", "C", "D"]
+report_endpoint ="https://us-central1-posty-ecd9b.cloudfunctions.net/helloWorld"
 
 class VideoCamera(object):
 	def __init__(self):
 		self.video = cv2.VideoCapture(0)
+		self.last_time = time.time() 
     
 	def __del__(self):
 		self.video.release()
@@ -30,7 +34,7 @@ class VideoCamera(object):
 
 	def get_violating_distances(self, people_squares):
 		violations = set()
-		if len(people_squares) > 2:
+		if len(people_squares) >= 2:
 			for (x_a_first, y_a_first, x_b_first, y_b_first) in people_squares:
 				for (x_a_snd, y_a_snd, x_b_snd, y_b_snd) in people_squares:
 					if (x_a_first, y_a_first, x_b_first, y_b_first) != (x_a_snd, y_a_snd, x_b_snd, y_b_snd):
@@ -38,8 +42,11 @@ class VideoCamera(object):
 						center_x_snd, center_y_snd = ((x_a_snd + x_b_snd)/2, (y_a_snd + y_b_snd)/2)
 						dist = math.sqrt(abs(center_x_snd - center_x_first)*2 + abs(center_y_snd - center_y_snd)*2)
 						if (dist < MAX_DIST):
-							report = {"timestamp": time.time(), "error": "Social distance violated", "store": stores[random.randint(0, 3)]}
-							requests.post(report_endpoint, json=report)
+							now = time.time()
+							if (now - self.last_time) > 2:
+								report = {"timestamp": time.time(), "error": "Social distance violated", "store": stores[random.randint(0, 3)]}
+								requests.post(report_endpoint, json=report)
+								self.last_time = time.time()
 							violations.add((x_a_first, y_a_first, x_b_first, y_b_first))
 							violations.add((x_a_first, y_a_first, x_b_first, y_b_first))
 		return violations
