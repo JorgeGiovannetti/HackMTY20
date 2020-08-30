@@ -5,14 +5,14 @@ import {
 	Redirect,
 	BrowserRouter as Router,
 } from "react-router-dom";
-import Dashboard from "../../../views/dashboard";
+import VideoFeed from "../../../views/videoFeed";
 import Analytics from "../../../views/analytics";
 import Reports from "../../../views/reports";
 
 const Routes = () => (
 	<Router>
 		<Switch>
-			<Route path="/" exact component={Dashboard} />
+			<Route path="/" exact component={VideoFeed} />
 			<Route path="/analytics" exact component={Analytics} />
 			<Route path="/reports" exact component={Reports} />
 			<Redirect to="/" />

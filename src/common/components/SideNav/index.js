@@ -8,8 +8,6 @@ import {
 import { Link, withRouter } from "react-router-dom";
 import firebase from "firebase";
 
-import ReportsLayout from "../ReportsLayout";
-
 const { Sider } = Layout;
 
 const logout = () => {
@@ -20,7 +18,7 @@ const SideNav = ({ location }) => {
 	const { pathname } = location;
 
 	return (
-		<Sider>
+		<Sider theme="light">
 			<div className="logo" />
 			<Menu
 				theme="light"
@@ -41,9 +39,10 @@ const SideNav = ({ location }) => {
 					<Link to="/reports"></Link>
 					<FormOutlined />
 					<span className="nav-text">Reports</span>
-					
 				</Menu.Item>
-				<Button onClick={logout}>Log Out</Button>
+				<Button style={{ marginLeft: "10%" }} onClick={logout}>
+					Log Out
+				</Button>
 			</Menu>
 		</Sider>
 	);
