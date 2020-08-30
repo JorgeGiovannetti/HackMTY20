@@ -9,8 +9,9 @@ const db = admin.database();
 exports.helloWorld = functions.https.onRequest((request, response) => {
   db.ref(`reports`).push({
     error: request.body.error,
+    timestamp: request.body.timestamp,
     store: request.body.store,
   });
-  response.status(200).send("Abdo mlp success");
+  response.status(200).send("success");
   return;
 });

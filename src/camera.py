@@ -44,7 +44,7 @@ class VideoCamera(object):
 						if (dist < MAX_DIST):
 							now = time.time()
 							if (now - self.last_time) > 2:
-								report = {"timestamp": time.time(), "error": "Social distance violated", "store": stores[random.randint(0, 3)]}
+								report = {"timestamp": int(time.time()), "error": "Social distance violated", "store": stores[random.randint(0, 3)]}
 								requests.post(report_endpoint, json=report)
 								self.last_time = time.time()
 							violations.add((x_a_first, y_a_first, x_b_first, y_b_first))

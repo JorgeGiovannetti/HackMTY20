@@ -36,7 +36,7 @@ const Message = ({
           textAlign={isYours ? "right" : "left"}
           color="lightGrey"
         >
-          {moment(sentAt).format("lll")}
+          {moment.unix(sentAt).format("lll")}
         </Typography>
         {isYours && seenAt && (
           <Avatar
