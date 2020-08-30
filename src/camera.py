@@ -14,11 +14,12 @@ from imutils.video import VideoStream
 import argparse
 import time
 import os
+from collections import namedtuple
 
 
 hog = cv2.HOGDescriptor()
 hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
-ONE_METER = 15
+ONE_METER = 10
 MAX_DIST = 75
 stores = ["A", "B", "C", "D"]
 report_endpoint = "https://us-central1-posty-ecd9b.cloudfunctions.net/helloWorld"
@@ -27,29 +28,19 @@ confidence_thresh = .6
 
 class VideoCamera(object):
     def __init__(self):
-        self.video = cv2.VideoCapture(1)
+        self.video = cv2.VideoCapture(0)
         self.last_time_distance = time.time()
         self.last_time_mask = time.time()
         self.prototxtPath = os.path.sep.join(
-            ["face_detector", "deploy.prototxt"])
+            ["C:/Users/Gio/Desktop/Coding/Projects/HackMTY20/posty/src/face_detector", "deploy.prototxt"])
         self.weightsPath = os.path.sep.join(
-            ["face_detector", "res10_300x300_ssd_iter_140000.caffemodel"])
+            ["C:/Users/Gio/Desktop/Coding/Projects/HackMTY20/posty/src/face_detector", "res10_300x300_ssd_iter_140000.caffemodel"])
         self.faceNet = cv2.dnn.readNet(self.prototxtPath, self.weightsPath)
 
-        self.maskNet = load_model("mask_detector.model")
+        self.maskNet = load_model("C:/Users/Gio/Desktop/Coding/Projects/HackMTY20/posty/src/mask_detector.model")
 
     def __del__(self):
         self.video.release()
-
-    # def detect_people(self, frame):
-    #    gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
-
-    #    (rects, weights) = hog.detectMultiScale(
-    #        frame, winStride=(8, 8), scale=1.05)
-    #    rects = np.array([[x, y, x + w, y + h] for (x, y, w, h) in rects])
-    #    pick = non_max_suppression(rects, probs=None, overlapThresh=0.5)
-
-    #    return pick
 
     def detect_and_predict_mask(self, frame, faceNet, maskNet):
         (h, w) = frame.shape[:2]
@@ -100,11 +91,11 @@ class VideoCamera(object):
                             (x_a_snd + x_b_snd)/2, (y_a_snd + y_b_snd)/2)
                         dist = math.sqrt(
                             abs(center_x_snd - center_x_first)*2 + abs(center_y_snd - center_y_snd)*2)
-                        if (dist < MAX_DIST):
+                        if (dist < ONE_METER * 3):
                             now = time.time()
-                            if (now - self.last_time_distance) > 2:
+                            if (now - self.last_time_distance) > 5:
                                 report = {"timestamp": time.time(
-                                ), "error": "Social distance violated " + str(int(dist / ONE_METER)), "store": stores[random.randint(0, 3)]}
+                                ), "error": "Social distance violated " + str(math.ceil(dist / ONE_METER)), "store": stores[random.randint(0, 3)]}
                                 requests.post(report_endpoint, json=report)
                                 self.last_time_distance = time.time()
                             violations.add(
@@ -127,18 +118,14 @@ class VideoCamera(object):
             label = "Mask" if mask > withoutMask else "No Mask"
             if label == "No Mask":
                 now = time.time()
-                if (now - self.last_time_mask) > 2:
+                if (now - self.last_time_mask) > 5:
                     report = {"timestamp": time.time(
                     ), "error": "Face mask violation", "store": stores[random.randint(0, 3)]}
                     requests.post(report_endpoint, json=report)
                     self.last_time_mask = time.time()
             color = (0, 0, 255) if label != "Mask" or (
-                startX, startY, endX, endY) not in violations else (0, 255, 0)
+                startX, startY, endX, endY) in violations else (0, 255, 0)
 
-            label = "{}: {:.2f}%".format(label, max(mask, withoutMask) * 100)
-
-            cv2.putText(frame, label, (startX, startY - 10),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.45, color, 2)
             cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
 
         ret, jpeg = cv2.imencode('.jpg', frame)
