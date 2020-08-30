@@ -19,7 +19,7 @@ from collections import namedtuple
 
 hog = cv2.HOGDescriptor()
 hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
-ONE_METER = 10
+ONE_METER = 8
 MAX_DIST = 75
 stores = ["A", "B", "C", "D"]
 report_endpoint = "https://us-central1-posty-ecd9b.cloudfunctions.net/helloWorld"
