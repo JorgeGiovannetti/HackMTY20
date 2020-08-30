@@ -4,6 +4,7 @@ import {
 	VideoCameraOutlined,
 	DatabaseOutlined,
 	FormOutlined,
+	BorderOuterOutlined,
 } from "@ant-design/icons";
 import { Link, withRouter } from "react-router-dom";
 import firebase from "firebase";
@@ -39,6 +40,11 @@ const SideNav = ({ location }) => {
 					<Link to="/reports"></Link>
 					<FormOutlined />
 					<span className="nav-text">Reports</span>
+				</Menu.Item>
+				<Menu.Item key="/sketch">
+					<Link to="/sketch"></Link>
+					<BorderOuterOutlined />
+					<span className="nav-text">Sketch</span>
 				</Menu.Item>
 				<Button style={{ marginLeft: "10%" }} onClick={logout}>
 					Log Out
