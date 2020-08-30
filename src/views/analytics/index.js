@@ -15,16 +15,18 @@ const Analytics = () => (
       }}
     >
       <Row>
-        <Container>
+        <Container width="40vw" height="40vh">
           <RadarGraph />
         </Container>
 
-        <Container>
-          <LineGraph />
+        <Container width="40vw" height="40vh">
+          <LineGraph width="50%" />
         </Container>
       </Row>
       <Row>
-        <BarGraph />
+        <Container width="80vw" height="40vh">
+          <BarGraph />
+        </Container>
       </Row>
     </div>
   </AppLayout>
