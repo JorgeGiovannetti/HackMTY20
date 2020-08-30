@@ -40,7 +40,7 @@ const Sketch = () => {
           name="diameter"
           rules={[{ required: true, message: "Please input your diameter!" }]}
         >
-          <Input placeholder="Diameter" />
+          <Input placeholder="Diameter (Meters)" />
         </Form.Item>
         <Form.Item
           name="quota"

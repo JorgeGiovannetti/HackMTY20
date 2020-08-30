@@ -34,12 +34,43 @@ function lineGraph(data) {
       var min = 10;
       var max = 30;
       var random = Math.floor(Math.random() * (+max - +min)) + +min;
-      barData.push({ name: i.toString() + ":00", real: 0, expected: random });
+      barData.push({
+        name: i.toString() + ":00",
+        current: 0,
+        recommended: random,
+      });
     }
     for (var i = 0; i < data.length; i++) {
       const hours = new Date(moment.unix(data[i].timestamp)).getHours();
-      barData[hours - 1].real = barData[hours - 1].real + 1;
+      barData[hours - 1].current = barData[hours - 1].current + 1;
     }
+    return barData;
+  }
+}
+
+function radarGraph(data) {
+  if (data === undefined) {
+    return null;
+  } else {
+    let barData = [
+      { subject: "Mask", A: 0, fullMark: 150 },
+      { subject: "Distance 1", A: 0, fullMark: 150 },
+      { subject: "Distance 2", A: 0, fullMark: 150 },
+      { subject: "Distance 3", A: 0, fullMark: 150 },
+    ];
+
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].error === "Face mask violation") {
+        barData[0].A = barData[0].A + 1;
+      } else if (data[i].error === "Social distance violated 1") {
+        barData[1].A = barData[1].A + 1;
+      } else if (data[i].error === "Social distance violated 2") {
+        barData[2].A = barData[2].A + 1;
+      } else {
+        barData[3].A = barData[3].A + 1;
+      }
+    }
+
     return barData;
   }
 }
@@ -64,12 +95,14 @@ const Analytics = () => {
         setDataSource(messages);
         setGraphSource(barGraph(messages));
         setLineSource(lineGraph(messages));
+        setRadarSource(radarGraph(messages));
       }
     });
   };
   const [dataSource, setDataSource] = useState();
   const [graphSource, setGraphSource] = useState();
   const [lineSource, setLineSource] = useState();
+  const [radarSource, setRadarSource] = useState();
 
   useEffect(() => {
     getMessages();
@@ -85,7 +118,7 @@ const Analytics = () => {
       >
         <Row>
           <Container width="38vw" height="40vh">
-            <RadarGraph />
+            <RadarGraph data={radarSource} />
           </Container>
 
           <Container width="38vw" height="40vh">
