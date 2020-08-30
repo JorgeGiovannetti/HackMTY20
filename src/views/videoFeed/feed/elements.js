@@ -39,7 +39,7 @@ const SendButton = styled(Button)`
 
 const Scroll = styled.div`
   overflow-y: scroll;
-  height: 100%;
+  height: 90%;
 `;
 
 const MessagesContainer = styled.div`
@@ -47,9 +47,9 @@ const MessagesContainer = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   padding-right: 10px;
-  padding-left: 10px;
+  padding-left: 40px;
   padding-top: 70px;
-  padding-bottom: 70px;
+  padding-bottom: 20px;
 `;
 
 const CloseButton = styled(Button)`

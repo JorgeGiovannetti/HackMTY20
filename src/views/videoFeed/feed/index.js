@@ -72,7 +72,7 @@ class ChatContent extends Component {
 
     return (
       <Container>
-        <WhiteBox height={70} top="0">
+        <WhiteBox height={30} top="0">
           <Box p={10} display="flex" alignItems="center">
             <Typography mr="auto" variant="leadText">
               Feed
@@ -98,7 +98,6 @@ class ChatContent extends Component {
               ))}
           </MessagesContainer>
         </Scroll>
-        <WhiteBox height={60} bottom="0"></WhiteBox>
       </Container>
     );
   }
