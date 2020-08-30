@@ -18,10 +18,11 @@ import os
 
 hog = cv2.HOGDescriptor()
 hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+ONE_METER = 15
 MAX_DIST = 75
 stores = ["A", "B", "C", "D"]
 report_endpoint = "https://us-central1-posty-ecd9b.cloudfunctions.net/helloWorld"
-confidence = .6
+confidence_thresh = .6
 
 
 class VideoCamera(object):
@@ -65,7 +66,7 @@ class VideoCamera(object):
         for i in range(0, detections.shape[2]):
             confidence = detections[0, 0, i, 2]
 
-            if confidence > confidence:
+            if confidence > confidence_thresh:
                 box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
                 (startX, startY, endX, endY) = box.astype("int")
 
@@ -103,7 +104,7 @@ class VideoCamera(object):
                             now = time.time()
                             if (now - self.last_time_distance) > 2:
                                 report = {"timestamp": time.time(
-                                ), "error": "Social distance violated", "store": stores[random.randint(0, 3)]}
+                                ), "error": "Social distance violated " + str(int(dist / ONE_METER)), "store": stores[random.randint(0, 3)]}
                                 requests.post(report_endpoint, json=report)
                                 self.last_time_distance = time.time()
                             violations.add(
