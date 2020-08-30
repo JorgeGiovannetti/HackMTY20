@@ -30,11 +30,11 @@ const Example = ({ data }) => (
       <Legend />
       <Line
         type="monotone"
-        dataKey="expected"
+        dataKey="recommended"
         stroke="#8884d8"
         activeDot={{ r: 8 }}
       />
-      <Line type="monotone" dataKey="real" stroke="#82ca9d" />
+      <Line type="monotone" dataKey="current" stroke="#82ca9d" />
     </LineChart>
   </ResponsiveContainer>
 );
