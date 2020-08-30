@@ -42,8 +42,8 @@ export default class Example extends PureComponent {
     return (
       <ResponsiveContainer>
         <RadarChart
-          cx={320}
-          cy={150}
+          cx={270}
+          cy={120}
           outerRadius={90}
           width={500}
           height={300}

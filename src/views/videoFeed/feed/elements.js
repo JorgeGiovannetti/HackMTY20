@@ -44,7 +44,7 @@ const Scroll = styled.div`
 
 const MessagesContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: flex-end;
   padding-right: 10px;
   padding-left: 40px;

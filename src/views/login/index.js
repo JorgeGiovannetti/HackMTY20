@@ -1,10 +1,20 @@
 import React, { Component } from "react";
 import firebase from "firebase";
-import { Card, Form, Input, Button, Divider, Typography } from "antd";
+import {
+  Card,
+  Form,
+  Row,
+  Input,
+  Button,
+  Divider,
+  Typography,
+  Image,
+} from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import Posty from "./posty.png";
 
 const { Item } = Form;
-const { Text } = Typography;
+const { Title, Text } = Typography;
 
 class Login extends Component {
   onFinish = (values) => {
@@ -29,6 +39,26 @@ class Login extends Component {
           marginTop: "15%",
         }}
       >
+        <Image
+          width={200}
+          src={Posty}
+          style={{
+            position: "absolute",
+            top: "8%",
+            right: "45%",
+          }}
+        />
+
+        <Title
+          style={{
+            position: "absolute",
+            top: "23%",
+            color: "#369BFA",
+            right: "45%",
+          }}
+        >
+          OSTy
+        </Title>
         <Card style={{ maxWidth: 450, width: "100%" }}>
           <Form onFinish={this.onFinish}>
             <Item
