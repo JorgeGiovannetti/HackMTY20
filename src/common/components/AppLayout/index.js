@@ -9,7 +9,7 @@ const AppLayout = ({ children }) => {
 		<Layout style={{ minHeight: "100vh", overflow: "auto" }}>
 			<SideNav />
 			<Layout>
-				<Content>{children}</Content>
+				<Content style={{ padding: "2%" }}>{children}</Content>
 			</Layout>
 		</Layout>
 	);
