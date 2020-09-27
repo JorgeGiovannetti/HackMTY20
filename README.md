@@ -21,4 +21,4 @@ We learned to make full stack web platforms using endpoints. Real time communica
 ## What's next for POSTy
 Doing some standard metric to accurately tell how safe a business is being based on the reports from the visual recognition. This expansion can have numerous effects like connection to the corresponding government entity.
 
-![](posty-demo.gif)
+![](POSTy_demo.gif)
