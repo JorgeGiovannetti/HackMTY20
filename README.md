@@ -1,68 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*README copied from devpost submission for HackMTY 2020*
 
-## Available Scripts
+## Inspiration
+A global pandemic is an event that affects negatively on the vast majority of people. Businesses are in special danger of going bankrupt. As social interactions and daily activities return to normal, businesses have the responsibility of helping diminish the spread of any disease in there workplaces.
 
-In the project directory, you can run:
+## What it does
+POSTy is the digital platform with full monitoring on covid prevention measures using visual recognition. It detects infractions in both face mask violations and social distancing in real time. We also help visualize data in real time with state of the art charts with important information for the user.
 
-### `yarn start`
+## How I built it
+Used a microservices architecture to run a python endpoint which processes a video stream and serves it to the web app. The processing uses machine learning models for visual recognition using keras and caffe. The platform was developed using React, Firebase, SWR, recharts and Ant Desgin.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Challenges I ran into
+Powerful hardware is a must for any visual recognition project, and unfortunately for us a vast majority of the time was spent understanding and adapting to this shortcoming. Another challenge was the communication between the python script and the web app.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Accomplishments that I'm proud of
+We built a highly functional real time app that meets all of our expectations and a full rounded product with a large amount of challenges we had to overcome.
 
-### `yarn test`
+## What I learned
+We learned to make full stack web platforms using endpoints. Real time communication was a must for this project so we also learned a lot about that.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## What's next for POSTy
+Doing some standard metric to accurately tell how safe a business is being based on the reports from the visual recognition. This expansion can have numerous effects like connection to the corresponding government entity.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
