@@ -1,4 +1,4 @@
-*README copied from devpost submission for HackMTY 2020*
+*README copied from [devpost submission](https://devpost.com/software/posty) for HackMTY 2020*
 
 ## Inspiration
 A global pandemic is an event that affects negatively on the vast majority of people. Businesses are in special danger of going bankrupt. As social interactions and daily activities return to normal, businesses have the responsibility of helping diminish the spread of any disease in there workplaces.
